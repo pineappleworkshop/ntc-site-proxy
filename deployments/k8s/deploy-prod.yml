@@ -3,25 +3,25 @@ kind: Deployment
 metadata:
   labels:
     app: ntc-site-proxy
-  name: ntc-proxy
+  name: ntc-site-proxy
 spec:
   selector:
     matchLabels:
-      app: ntc-proxy  
+      app: ntc-site-proxy  
   replicas: 1
   strategy:
     type: Recreate
   template: 
     metadata:
       labels:
-        app: ntc-proxy
+        app: ntc-site-proxy
     spec:
       containers:
       - env:
         - name: SERVERNAME
           value: nakamoto.trading
-        image: gcr.io/pineappleworkshop/ntc-proxy:0.0.0
-        name: ntc-proxy
+        image: gcr.io/pineappleworkshop/ntc-site-proxy:0.0.0
+        name: ntc-site-proxy
         securityContext:
           capabilities:
             add:
@@ -33,10 +33,10 @@ spec:
         resources: {}
         volumeMounts:
         - mountPath: /etc/letsencrypt
-          name: ntc-proxy-ssl-claim
+          name: ntc-site-proxy-ssl-claim
       restartPolicy: Always
       volumes:
-      - name: ntc-proxy-ssl-claim
+      - name: ntc-site-proxy-ssl-claim
         persistentVolumeClaim:
-          claimName: ntc-proxy-ssl-claim
+          claimName: ntc-site-proxy-ssl-claim
 status: {}

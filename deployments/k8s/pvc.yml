@@ -3,8 +3,8 @@ kind: PersistentVolumeClaim
 metadata:
   creationTimestamp: null
   labels:
-    app: ntc-proxy-ssl-claim
-  name: ntc-proxy-ssl-claim
+    app: ntc-site-proxy-ssl-claim
+  name: ntc-site-proxy-ssl-claim
 spec:
   accessModes:
   - ReadWriteOnce
