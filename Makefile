@@ -1,5 +1,5 @@
 service := ntc-site-proxy
-version := 0.0.0
+version := 0.0.1
 docker_org :=  pineappleworkshop
 gcloud_proj := pineappleworkshop
 cluster-dev := pw-dev

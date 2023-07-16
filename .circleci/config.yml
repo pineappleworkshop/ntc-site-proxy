@@ -72,7 +72,7 @@ workflows:
     jobs:
       - gcp-gcr/build-and-push-image:
           image: ntc-site-proxy
-          tag: 0.0.0
+          tag: 0.0.1
           registry-url: gcr.io
           filters:
             branches:
@@ -83,7 +83,7 @@ workflows:
           container: ntc-site-proxy
           deployment: ntc-site-proxy
           image: gcr.io/pineappleworkshop/ntc-site-proxy
-          tag: 0.0.0
+          tag: 0.0.1
           namespace: default
           filters:
             branches:
@@ -97,7 +97,7 @@ workflows:
     jobs:
       - gcp-gcr/build-and-push-image:
           image: ntc-site-proxy
-          tag: 0.0.0
+          tag: 0.0.1
           registry-url: gcr.io
           filters:
             branches:
@@ -108,7 +108,7 @@ workflows:
           container: ntc-site-proxy
           deployment: ntc-site-proxy
           image: gcr.io/pineappleworkshop/ntc-site-proxy
-          tag: 0.0.0
+          tag: 0.0.1
           namespace: default
           filters:
             branches:
