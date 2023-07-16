@@ -19,7 +19,7 @@ spec:
       containers:
       - env:
         - name: SERVERNAME
-          value: nakamoto.trading
+          value: nakamoto.trade
         image: gcr.io/pineappleworkshop/ntc-site-proxy:0.0.0
         name: ntc-site-proxy
         securityContext:
