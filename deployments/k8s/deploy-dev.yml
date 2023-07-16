@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ntc-site-proxy
+  name: ntc-site-proxy
+spec:
+  selector:
+    matchLabels:
+      app: ntc-site-proxy  
+  replicas: 1
+  strategy:
+    type: Recreate
+  template: 
+    metadata:
+      labels:
+        app: ntc-site-proxy
+    spec:
+      containers:
+      - env:
+        - name: SERVERNAME
+          value: nakamoto.trading
+        image: gcr.io/pineappleworkshop/ntc-site-proxy:0.0.0
+        name: ntc-site-proxy
+        securityContext:
+          capabilities:
+            add:
+              - NET_ADMIN
+              - NET_RAW
+        ports:
+        - containerPort: 80
+        - containerPort: 443
+        resources: {}
+        volumeMounts:
+        - mountPath: /etc/letsencrypt
+          name: ntc-site-proxy-ssl-claim
+      restartPolicy: Always
+      volumes:
+      - name: ntc-site-proxy-ssl-claim
+        persistentVolumeClaim:
+          claimName: ntc-site-proxy-ssl-claim
+status: {}
