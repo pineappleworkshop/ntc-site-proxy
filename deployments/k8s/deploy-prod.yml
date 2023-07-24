@@ -4,11 +4,12 @@ metadata:
   labels:
     app: ntc-site-proxy
   name: ntc-site-proxy
+  namespace: ntc
 spec:
   selector:
     matchLabels:
       app: ntc-site-proxy  
-  replicas: 1
+  replicas: 0
   strategy:
     type: Recreate
   template: 
@@ -20,7 +21,9 @@ spec:
       - env:
         - name: SERVERNAME
           value: nakamoto.trade
-        image: gcr.io/pineappleworkshop/ntc-site-proxy:0.0.1
+        - name: PODSERVICENAME
+          value: nakamoto
+        image: gcr.io/pineappleworkshop/ntc-site-proxy:0.0.2
         name: ntc-site-proxy
         securityContext:
           capabilities:
