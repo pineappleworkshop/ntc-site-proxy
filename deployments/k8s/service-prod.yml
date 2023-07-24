@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ntc-site-proxy
+  name: ntc-site-proxy
+  namespace: ntc
+spec:
+  ports:
+  - name: "80"
+    port: 80
+    targetPort: 80
+  - name: "443"
+    port: 443
+    targetPort: 443
+  selector:
+    app: ntc-site-proxy
+  externalTrafficPolicy: Local
+  type: LoadBalancer
+status:
+  loadBalancer: {}
